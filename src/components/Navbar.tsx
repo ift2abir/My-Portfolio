@@ -52,12 +52,23 @@ export const Navbar: React.FC = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  // Close mobile menu on Escape key
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && mobileMenuOpen) {
+        setMobileMenuOpen(false);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [mobileMenuOpen]);
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? 'bg-[#171717]/90 backdrop-blur-md border-b border-dark-border py-4'
-          : 'bg-transparent py-6'
+        isScrolled || mobileMenuOpen
+          ? 'bg-[#171717]/95 backdrop-blur-md border-b border-dark-border py-3 sm:py-4'
+          : 'bg-transparent py-4 sm:py-6'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -118,16 +129,25 @@ export const Navbar: React.FC = () => {
               aria-expanded={mobileMenuOpen}
               aria-label="Toggle navigation menu"
             >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {mobileMenuOpen ? <X className="w-6 h-6 text-white" /> : <Menu className="w-6 h-6" />}
             </button>
           </div>
         </div>
       </div>
 
-      {/* Mobile Drawer Navigation */}
+      {/* Mobile Drawer Navigation Backdrop */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-[#171717]/95 backdrop-blur-xl border-b border-dark-border px-5 pt-4 pb-6">
-          <nav className="flex flex-col space-y-2" aria-label="Mobile Navigation">
+        <div
+          className="md:hidden fixed inset-0 top-[60px] bg-black/60 backdrop-blur-xs z-40"
+          onClick={() => setMobileMenuOpen(false)}
+          aria-hidden="true"
+        />
+      )}
+
+      {/* Mobile Drawer Navigation Panel */}
+      {mobileMenuOpen && (
+        <div className="md:hidden relative z-50 bg-[#171717]/98 backdrop-blur-xl border-b border-dark-border px-5 pt-3 pb-6 shadow-2xl animate-in slide-in-from-top-2 duration-200">
+          <nav className="flex flex-col space-y-1.5" aria-label="Mobile Navigation">
             {navItems.map((item) => {
               const sectionId = item.href.substring(1);
               const isActive = activeSection === sectionId;
@@ -136,7 +156,7 @@ export const Navbar: React.FC = () => {
                   key={item.name}
                   href={item.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`px-3 py-2.5 rounded-lg text-sm font-semibold transition-colors ${
+                  className={`px-3.5 py-2.5 rounded-lg text-sm font-semibold transition-colors ${
                     isActive
                       ? 'text-white bg-dark-surface border-l-2 border-accent-orange'
                       : 'text-content-secondary hover:text-white hover:bg-dark-surface/50'
@@ -146,7 +166,7 @@ export const Navbar: React.FC = () => {
                 </a>
               );
             })}
-            <div className="pt-3 mt-2 border-t border-dark-border">
+            <div className="pt-3 mt-1.5 border-t border-dark-border">
               <a
                 href={personalInfo.whatsappUrl}
                 target="_blank"

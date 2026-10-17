@@ -119,18 +119,18 @@ export const AskAbirChat: React.FC = () => {
 
   return (
     <>
-      {/* 1. Floating Chat Launcher (Bottom-Right) */}
+      {/* 1. Floating Chat Launcher (Bottom-Right) - Compact on Mobile, Pill on Desktop */}
       {!isOpen && (
         <button
           ref={launcherRef}
           type="button"
           onClick={() => setIsOpen(true)}
-          className="fixed bottom-6 right-6 z-40 group flex items-center gap-3 px-4 py-3 rounded-full bg-[#1F1F1F] hover:bg-[#252525] border border-dark-border hover:border-accent-orange/60 text-white shadow-panel hover:shadow-glow-orange transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-accent-orange"
+          className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 group flex items-center gap-2.5 p-2.5 sm:px-4 sm:py-3 rounded-full bg-[#1F1F1F] hover:bg-[#252525] border border-dark-border hover:border-accent-orange/60 text-white shadow-panel hover:shadow-glow-orange transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-accent-orange"
           aria-label="Open Ask Abir AI chat"
           title="Open Ask Abir AI chat"
         >
-          <div className="relative w-8 h-8 rounded-full bg-accent-orange flex items-center justify-center text-white shadow-sm group-hover:scale-105 transition-transform">
-            <Bot className="w-4 h-4" />
+          <div className="relative w-9 h-9 sm:w-8 sm:h-8 rounded-full bg-accent-orange flex items-center justify-center text-white shadow-sm group-hover:scale-105 transition-transform flex-shrink-0">
+            <Bot className="w-4 h-4 sm:w-4 sm:h-4" />
             <span className="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-emerald-400 border-2 border-[#1F1F1F]" />
           </div>
           <div className="text-left hidden sm:block">
@@ -144,27 +144,36 @@ export const AskAbirChat: React.FC = () => {
         </button>
       )}
 
-      {/* 2. Floating Chat Modal / Drawer */}
+      {/* Mobile Backdrop Overlay when chat is open */}
+      {isOpen && (
+        <div
+          className="sm:hidden fixed inset-0 bg-black/60 backdrop-blur-xs z-50"
+          onClick={() => setIsOpen(false)}
+          aria-hidden="true"
+        />
+      )}
+
+      {/* 2. Floating Chat Modal / Drawer - Clean App-like Placement on Mobile */}
       {isOpen && (
         <section
           aria-label="Ask Abir AI chat window"
-          className="fixed bottom-3 right-3 sm:bottom-6 sm:right-6 z-50 w-[calc(100vw-1.5rem)] sm:w-[420px] h-[570px] max-h-[85vh] flex flex-col rounded-2xl bg-[#171717] border border-dark-border shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200"
+          className="fixed inset-x-3 bottom-3 sm:inset-x-auto sm:right-6 sm:bottom-6 z-50 sm:w-[420px] h-[540px] max-h-[84vh] flex flex-col rounded-2xl bg-[#171717] border border-dark-border shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200"
         >
           {/* Header */}
-          <div className="px-5 py-4 bg-[#202020] border-b border-dark-border flex items-center justify-between flex-shrink-0">
-            <div className="flex items-center gap-3">
-              <div className="relative w-9 h-9 rounded-xl bg-accent-orange/15 border border-accent-orange/30 flex items-center justify-center text-accent-orange">
-                <Bot className="w-5 h-5" />
-                <span className="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-400 border-2 border-[#202020]" />
+          <div className="px-4 py-3.5 sm:px-5 sm:py-4 bg-[#202020] border-b border-dark-border flex items-center justify-between flex-shrink-0">
+            <div className="flex items-center gap-2.5 sm:gap-3">
+              <div className="relative w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-accent-orange/15 border border-accent-orange/30 flex items-center justify-center text-accent-orange">
+                <Bot className="w-4 h-4 sm:w-5 sm:h-5" />
+                <span className="absolute bottom-0 right-0 w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-emerald-400 border-2 border-[#202020]" />
               </div>
               <div>
                 <div className="flex items-center gap-1.5">
-                  <h3 className="text-sm font-bold text-white tracking-tight">Ask Abir AI</h3>
-                  <span className="px-1.5 py-0.5 rounded text-[10px] font-mono font-bold bg-accent-orange/20 text-accent-orange">
+                  <h3 className="text-xs sm:text-sm font-bold text-white tracking-tight">Ask Abir AI</h3>
+                  <span className="px-1.5 py-0.5 rounded text-[9px] sm:text-[10px] font-mono font-bold bg-accent-orange/20 text-accent-orange">
                     SMART AI
                   </span>
                 </div>
-                <p className="text-xs text-content-muted">Instant verified portfolio assistant</p>
+                <p className="text-[11px] sm:text-xs text-content-muted">Instant verified portfolio assistant</p>
               </div>
             </div>
 
@@ -190,7 +199,7 @@ export const AskAbirChat: React.FC = () => {
           </div>
 
           {/* Quick WhatsApp Action Strip */}
-          <div className="px-4 py-2 bg-[#1B1B1B] border-b border-dark-border/60 flex items-center justify-between text-xs flex-shrink-0">
+          <div className="px-3.5 py-2 sm:px-4 sm:py-2 bg-[#1B1B1B] border-b border-dark-border/60 flex items-center justify-between text-xs flex-shrink-0">
             <span className="text-content-secondary flex items-center gap-1.5 text-[11px]">
               <Sparkles className="w-3.5 h-3.5 text-accent-orange" />
               <span>Need a fast reply?</span>
@@ -203,14 +212,14 @@ export const AskAbirChat: React.FC = () => {
               aria-label="Contact Abir directly on WhatsApp"
             >
               <WhatsAppIcon className="w-3 h-3" />
-              <span>Contact Abir on WhatsApp</span>
+              <span>WhatsApp</span>
               <ArrowUpRight className="w-3 h-3" />
             </a>
           </div>
 
           {/* Scrollable Message List */}
           <div
-            className="flex-1 p-4 overflow-y-auto space-y-3.5 focus:outline-none"
+            className="flex-1 p-3.5 sm:p-4 overflow-y-auto space-y-3 sm:space-y-3.5 focus:outline-none"
             tabIndex={0}
             role="log"
             aria-live="polite"
@@ -224,14 +233,14 @@ export const AskAbirChat: React.FC = () => {
                   className={`flex flex-col ${isUser ? 'items-end' : 'items-start'}`}
                 >
                   <div
-                    className={`max-w-[88%] p-3.5 rounded-2xl ${
+                    className={`max-w-[90%] sm:max-w-[88%] p-3 sm:p-3.5 rounded-2xl ${
                       isUser
                         ? 'bg-accent-orange text-white rounded-tr-xs shadow-sm font-sans'
                         : 'bg-[#202020] border border-dark-border text-white rounded-tl-xs shadow-sm'
                     }`}
                   >
                     {isUser ? (
-                      <p className="text-sm leading-relaxed whitespace-pre-wrap">{msg.content}</p>
+                      <p className="text-xs sm:text-sm leading-relaxed whitespace-pre-wrap">{msg.content}</p>
                     ) : (
                       <SafeMarkdown content={msg.content} />
                     )}
@@ -246,7 +255,7 @@ export const AskAbirChat: React.FC = () => {
             {/* Typing / Loading Indicator */}
             {isLoading && (
               <div className="flex items-start gap-2">
-                <div className="p-3.5 rounded-2xl rounded-tl-xs bg-[#202020] border border-dark-border flex items-center gap-1.5">
+                <div className="p-3 sm:p-3.5 rounded-2xl rounded-tl-xs bg-[#202020] border border-dark-border flex items-center gap-1.5">
                   <span className="w-2 h-2 rounded-full bg-accent-orange animate-bounce [animation-delay:-0.3s]" />
                   <span className="w-2 h-2 rounded-full bg-accent-orange animate-bounce [animation-delay:-0.15s]" />
                   <span className="w-2 h-2 rounded-full bg-accent-orange animate-bounce" />
@@ -259,7 +268,7 @@ export const AskAbirChat: React.FC = () => {
 
           {/* Suggested Questions (only visible if conversation has only initial welcome) */}
           {messages.length === 1 && (
-            <div className="px-4 py-2.5 bg-[#1A1A1A] border-t border-dark-border/60 flex-shrink-0">
+            <div className="px-3.5 py-2 sm:px-4 sm:py-2.5 bg-[#1A1A1A] border-t border-dark-border/60 flex-shrink-0">
               <span className="text-[10px] font-mono uppercase text-content-muted block mb-1.5">
                 Suggested questions:
               </span>
@@ -294,7 +303,7 @@ export const AskAbirChat: React.FC = () => {
           )}
 
           {/* Input & Controls */}
-          <div className="p-3 bg-[#202020] border-t border-dark-border flex-shrink-0">
+          <div className="p-2.5 sm:p-3 bg-[#202020] border-t border-dark-border flex-shrink-0">
             <form
               onSubmit={(e) => {
                 e.preventDefault();
@@ -311,7 +320,7 @@ export const AskAbirChat: React.FC = () => {
                 maxLength={500}
                 placeholder="Ask about Abir's skills, education, projects..."
                 disabled={isLoading}
-                className="flex-1 bg-transparent text-sm text-white placeholder-content-muted resize-none focus:outline-none max-h-24 leading-normal disabled:opacity-50"
+                className="flex-1 bg-transparent text-xs sm:text-sm text-white placeholder-content-muted resize-none focus:outline-none max-h-20 sm:max-h-24 leading-normal disabled:opacity-50"
                 aria-label="Message input"
               />
 
@@ -332,7 +341,8 @@ export const AskAbirChat: React.FC = () => {
               </div>
             </form>
             <div className="mt-1.5 flex items-center justify-between text-[10px] text-content-muted px-1 font-mono">
-              <span>Enter to send · Shift+Enter for new line</span>
+              <span className="hidden sm:inline">Enter to send · Shift+Enter for new line</span>
+              <span className="sm:hidden">Tap send icon</span>
               <span className="text-emerald-400">● 100% Reliable · Client AI</span>
             </div>
           </div>

@@ -19,15 +19,15 @@ export const Footer: React.FC = () => {
   ];
 
   return (
-    <footer className="bg-[#121212] border-t border-dark-border py-12 relative overflow-hidden">
+    <footer className="bg-[#121212] border-t border-dark-border py-8 sm:py-12 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <div className="flex flex-col md:flex-row items-center justify-between gap-8 pb-10 border-b border-dark-border/60">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6 sm:gap-8 pb-6 sm:pb-10 border-b border-dark-border/60">
           
           {/* Logo & Headline */}
           <div className="flex flex-col items-center md:items-start text-center md:text-left">
             <a href="#home" className="flex items-center gap-1.5 mb-2 group">
-              <span className="text-2xl font-black tracking-tight text-white font-sans">
+              <span className="text-xl sm:text-2xl font-black tracking-tight text-white font-sans">
                 IFTA ABIR<span className="text-accent-orange">.</span>
               </span>
             </a>
@@ -37,12 +37,12 @@ export const Footer: React.FC = () => {
           </div>
 
           {/* Quick Nav Links */}
-          <nav className="flex flex-wrap items-center justify-center gap-6 text-xs font-semibold text-content-secondary uppercase tracking-wider" aria-label="Footer Navigation">
+          <nav className="flex flex-wrap items-center justify-center gap-3.5 sm:gap-6 text-xs font-semibold text-content-secondary uppercase tracking-wider" aria-label="Footer Navigation">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                className="hover:text-accent-orange transition-colors"
+                className="hover:text-accent-orange transition-colors py-1"
               >
                 {link.name}
               </a>
@@ -50,7 +50,7 @@ export const Footer: React.FC = () => {
           </nav>
 
           {/* Social Links & Back to Top */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2.5 sm:gap-3">
             <a
               href={personalInfo.github}
               target="_blank"
@@ -78,7 +78,7 @@ export const Footer: React.FC = () => {
             </a>
             <button
               onClick={scrollToTop}
-              className="w-10 h-10 rounded-full bg-[#202020] border border-dark-border flex items-center justify-center text-white hover:text-white hover:bg-accent-orange hover:border-accent-orange transition-all ml-2 focus:outline-none focus:ring-2 focus:ring-accent-orange"
+              className="w-10 h-10 rounded-full bg-[#202020] border border-dark-border flex items-center justify-center text-white hover:text-white hover:bg-accent-orange hover:border-accent-orange transition-all ml-1 sm:ml-2 focus:outline-none focus:ring-2 focus:ring-accent-orange"
               aria-label="Back to top"
               title="Back to top"
             >
@@ -89,7 +89,7 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* Bottom Credits & Copyright */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-content-muted gap-4 text-center sm:text-left">
+        <div className="pt-6 sm:pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-content-muted gap-3 sm:gap-4 text-center sm:text-left">
           <p>
             &copy; {currentYear} Ifta Abir. All rights reserved.
           </p>

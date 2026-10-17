@@ -16,7 +16,7 @@ const AskAbirChat = lazy(() =>
 
 export const App: React.FC = () => {
   return (
-    <div className="min-h-screen bg-[#171717] text-white selection:bg-accent-orange/30 selection:text-white flex flex-col font-sans">
+    <div className="min-h-screen bg-[#171717] text-white selection:bg-accent-orange/30 selection:text-white flex flex-col font-sans overflow-x-hidden">
       {/* 1. Navigation Bar */}
       <Navbar />
 

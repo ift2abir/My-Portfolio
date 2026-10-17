@@ -28,38 +28,38 @@ export const AboutSection: React.FC = () => {
   ];
 
   return (
-    <section id="about" className="py-24 bg-[#1A1A1A] border-t border-dark-border relative scroll-mt-16">
+    <section id="about" className="py-14 sm:py-20 lg:py-24 bg-[#1A1A1A] border-t border-dark-border relative scroll-mt-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <ScrollReveal distance={16}>
-          <div className="max-w-3xl mb-16">
+          <div className="max-w-3xl mb-10 sm:mb-14 lg:mb-16">
             <p className="text-xs font-bold uppercase tracking-widest text-accent-orange font-mono mb-2">
               01. ABOUT ME
             </p>
-            <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight mb-6">
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight mb-4 sm:mb-6">
               Building with Purpose & Continuous Learning
             </h2>
-            <p className="text-content-secondary text-base sm:text-lg leading-relaxed mb-4">
+            <p className="text-content-secondary text-sm sm:text-base lg:text-lg leading-relaxed mb-3 sm:mb-4">
               I am a Software Engineering undergraduate at {personalInfo.university}. My educational journey is centered around developing strong analytical capabilities, writing clean code, and understanding how technology can be applied to solve genuine challenges.
             </p>
-            <p className="text-content-secondary text-base sm:text-lg leading-relaxed">
+            <p className="text-content-secondary text-sm sm:text-base lg:text-lg leading-relaxed">
               I am deeply interested in software engineering, data science, and front-end development. Rather than chasing superficial trends, I focus on mastering foundational computer science principles and building practical applications that deliver value.
             </p>
           </div>
         </ScrollReveal>
 
         {/* Focus Areas Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-10 sm:mb-14 lg:mb-16">
           {focusAreas.map((area, idx) => {
             const Icon = area.icon;
             return (
-              <ScrollReveal key={idx} delay={idx * 100} distance={16}>
-                <div className="p-7 rounded-xl bg-[#202020] border border-dark-border hover:border-accent-orange/40 hover:-translate-y-1 transition-all duration-300 group h-full">
-                  <div className="w-12 h-12 rounded-lg bg-[#272727] flex items-center justify-center text-accent-orange mb-5 group-hover:scale-105 group-hover:bg-accent-orange/15 transition-all duration-300">
-                    <Icon className="w-6 h-6" />
+              <ScrollReveal key={idx} delay={idx * 80} distance={16}>
+                <div className="p-5 sm:p-7 rounded-xl bg-[#202020] border border-dark-border hover:border-accent-orange/40 hover:-translate-y-1 transition-all duration-300 group h-full">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-[#272727] flex items-center justify-center text-accent-orange mb-4 sm:mb-5 group-hover:scale-105 group-hover:bg-accent-orange/15 transition-all duration-300">
+                    <Icon className="w-5 h-5 sm:w-6 sm:h-6" />
                   </div>
-                  <h3 className="text-base font-bold text-white mb-2 group-hover:text-accent-orange transition-colors">
+                  <h3 className="text-sm sm:text-base font-bold text-white mb-2 group-hover:text-accent-orange transition-colors">
                     {area.title}
                   </h3>
                   <p className="text-xs sm:text-sm text-content-secondary leading-relaxed">
@@ -72,34 +72,34 @@ export const AboutSection: React.FC = () => {
         </div>
 
         {/* Academic & Personal Snapshot */}
-        <ScrollReveal delay={200} distance={14}>
-          <div className="p-8 rounded-xl bg-[#202020] border border-dark-border grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <ScrollReveal delay={150} distance={14}>
+          <div className="p-5 sm:p-8 rounded-xl bg-[#202020] border border-dark-border grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             <div>
-              <span className="text-xs text-content-muted font-mono uppercase tracking-wider block mb-1">
+              <span className="text-[11px] sm:text-xs text-content-muted font-mono uppercase tracking-wider block mb-1">
                 Role
               </span>
-              <p className="text-base font-bold text-white">{personalInfo.role}</p>
+              <p className="text-sm sm:text-base font-bold text-white">{personalInfo.role}</p>
             </div>
 
             <div>
-              <span className="text-xs text-content-muted font-mono uppercase tracking-wider block mb-1">
+              <span className="text-[11px] sm:text-xs text-content-muted font-mono uppercase tracking-wider block mb-1">
                 University
               </span>
-              <p className="text-base font-bold text-white">{personalInfo.university}</p>
+              <p className="text-sm sm:text-base font-bold text-white">{personalInfo.university}</p>
             </div>
 
             <div>
-              <span className="text-xs text-content-muted font-mono uppercase tracking-wider block mb-1">
+              <span className="text-[11px] sm:text-xs text-content-muted font-mono uppercase tracking-wider block mb-1">
                 Location
               </span>
-              <p className="text-base font-bold text-white">{personalInfo.location}</p>
+              <p className="text-sm sm:text-base font-bold text-white">{personalInfo.location}</p>
             </div>
 
             <div>
-              <span className="text-xs text-content-muted font-mono uppercase tracking-wider block mb-1">
+              <span className="text-[11px] sm:text-xs text-content-muted font-mono uppercase tracking-wider block mb-1">
                 Status
               </span>
-              <p className="text-base font-bold text-accent-orange">Actively Learning & Building</p>
+              <p className="text-sm sm:text-base font-bold text-accent-orange">Actively Learning & Building</p>
             </div>
           </div>
         </ScrollReveal>

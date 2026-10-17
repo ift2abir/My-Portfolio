@@ -46,49 +46,49 @@ export const ContactSection: React.FC = () => {
   ];
 
   return (
-    <section id="contact" className="py-24 bg-[#1A1A1A] border-t border-dark-border relative scroll-mt-16">
+    <section id="contact" className="py-14 sm:py-20 lg:py-24 bg-[#1A1A1A] border-t border-dark-border relative scroll-mt-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <ScrollReveal distance={16}>
-          <div className="max-w-3xl mb-16">
+          <div className="max-w-3xl mb-10 sm:mb-14 lg:mb-16">
             <p className="text-xs font-bold uppercase tracking-widest text-accent-orange font-mono mb-2">
               05. CONTACT INFORMATION
             </p>
-            <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight mb-4">
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight mb-3 sm:mb-4">
               Let's Start a Conversation
             </h2>
-            <p className="text-content-secondary text-base sm:text-lg">
+            <p className="text-content-secondary text-sm sm:text-base lg:text-lg">
               Whether you are interested in discussing software projects, sharing insights on data science, or exploring collaboration opportunities—feel free to reach out.
             </p>
           </div>
         </ScrollReveal>
 
         {/* Channels Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {contactChannels.map((channel, idx) => {
             const Icon = channel.icon;
             return (
-              <ScrollReveal key={idx} delay={idx * 80} distance={16}>
-                <div className="p-7 rounded-xl bg-[#202020] border border-dark-border hover:border-accent-orange/40 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between h-full">
+              <ScrollReveal key={idx} delay={idx * 70} distance={16}>
+                <div className="p-5 sm:p-7 rounded-xl bg-[#202020] border border-dark-border hover:border-accent-orange/40 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between h-full">
                   <div>
-                    <div className="w-12 h-12 rounded-lg bg-[#272727] flex items-center justify-center text-accent-orange mb-5 group-hover:scale-105 transition-transform">
-                      <Icon className="w-6 h-6" />
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-[#272727] flex items-center justify-center text-accent-orange mb-4 sm:mb-5 group-hover:scale-105 transition-transform">
+                      <Icon className="w-5 h-5 sm:w-6 sm:h-6" />
                     </div>
-                    <span className="text-xs font-mono uppercase text-content-muted tracking-wider block mb-1">
+                    <span className="text-[11px] sm:text-xs font-mono uppercase text-content-muted tracking-wider block mb-1">
                       {channel.label}
                     </span>
-                    <p className="text-base font-bold text-white mb-2 break-all">
+                    <p className="text-sm sm:text-base font-bold text-white mb-2 break-all">
                       {channel.value}
                     </p>
                     {channel.desc && (
-                      <p className="text-xs text-content-secondary mb-4">
+                      <p className="text-xs text-content-secondary mb-3 sm:mb-4">
                         {channel.desc}
                       </p>
                     )}
                   </div>
 
-                  <div className="pt-4 border-t border-dark-border/60 flex items-center gap-3">
+                  <div className="pt-3.5 sm:pt-4 border-t border-dark-border/60 flex items-center gap-3">
                     {channel.href && (
                       <a
                         href={channel.href}
