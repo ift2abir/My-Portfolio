@@ -93,8 +93,12 @@ function parseInline(text: string): React.ReactNode[] {
     const linkMatch = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
     if (linkMatch) {
       const href = linkMatch[2];
-      // Basic URL protocol safety
-      const isSafeProtocol = href.startsWith('https://') || href.startsWith('http://') || href.startsWith('mailto:');
+      // Basic URL protocol safety (support web links, email, and internal site file links)
+      const isSafeProtocol =
+        href.startsWith('https://') ||
+        href.startsWith('http://') ||
+        href.startsWith('mailto:') ||
+        href.startsWith('/');
       if (isSafeProtocol) {
         return (
           <a

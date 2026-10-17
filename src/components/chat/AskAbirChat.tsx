@@ -1,29 +1,29 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { X, Send, Bot, Sparkles, RefreshCw, AlertCircle, ArrowUpRight } from 'lucide-react';
+import { X, Send, Bot, Sparkles, RefreshCw, ArrowUpRight } from 'lucide-react';
 import { WhatsAppIcon } from '../icons/WhatsAppIcon';
 import { SafeMarkdown } from './SafeMarkdown';
 import { personalInfo } from '../../data/portfolioData';
+import { generateLocalChatResponse } from './localChatKnowledge';
 
 interface Message {
   id: string;
   role: 'user' | 'assistant';
   content: string;
   timestamp: Date;
-  isError?: boolean;
 }
 
 const SUGGESTED_QUESTIONS = [
   'Who is Ifta Abir?',
+  "What is Abir's education?",
+  'What skills does Abir have?',
   'What projects has Abir built?',
-  'What technologies does Abir use?',
-  "What are Abir's career goals?",
   'How can I contact Abir?',
 ];
 
 const INITIAL_MESSAGE: Message = {
   id: 'welcome-1',
   role: 'assistant',
-  content: `Hello! I'm **Ask Abir AI**, Ifta Abir's personal portfolio assistant.\n\nI can answer questions about Abir's software engineering background, university studies at Daffodil International University, technical skills, projects, and contact channels.\n\nHow can I help you today?`,
+  content: `Hello! I'm **Ask Abir AI**, Ifta Abir's personal portfolio assistant.\n\nI can answer questions about Abir's software engineering background, university studies at Daffodil International University, technical skills (Python, C, HTML, CSS, React, Git), projects, and contact channels.\n\nHow can I help you today?`,
   timestamp: new Date(),
 };
 
@@ -69,7 +69,7 @@ export const AskAbirChat: React.FC = () => {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isOpen]);
 
-  const handleSendMessage = async (textToSend?: string) => {
+  const handleSendMessage = (textToSend?: string) => {
     const query = (textToSend || input).trim();
     if (!query || isLoading) return;
 
@@ -88,84 +88,27 @@ export const AskAbirChat: React.FC = () => {
       timestamp: new Date(),
     };
 
-    const nextMessages = [...messages, userMessage];
-    setMessages(nextMessages);
+    setMessages((prev) => [...prev, userMessage]);
     setIsLoading(true);
 
-    try {
-      // Bounded history: send only the last 6 messages
-      const historyPayload = nextMessages
-        .filter((m) => !m.isError)
-        .slice(-6)
-        .map((m) => ({
-          role: m.role,
-          content: m.content,
-        }));
-
-      const response = await fetch('/api/chat', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          message: query,
-          history: historyPayload,
-        }),
-      });
-
-      const data = await response.json().catch(() => null);
-
-      if (!response.ok || !data?.reply) {
-        const errorText =
-          data?.error ||
-          (response.status === 503
-            ? 'The AI assistant is currently offline. Please reach out to Abir directly on WhatsApp.'
-            : 'Sorry, I encountered an issue processing your request. Please try again.');
-
-        const errorMessage: Message = {
-          id: `error-${Date.now()}`,
-          role: 'assistant',
-          content: errorText,
-          timestamp: new Date(),
-          isError: true,
-        };
-        setMessages((prev) => [...prev, errorMessage]);
-      } else {
-        const assistantMessage: Message = {
-          id: `assistant-${Date.now()}`,
-          role: 'assistant',
-          content: data.reply,
-          timestamp: new Date(),
-        };
-        setMessages((prev) => [...prev, assistantMessage]);
-      }
-    } catch {
-      const networkErrorMessage: Message = {
-        id: `net-err-${Date.now()}`,
+    // Smooth realistic conversational typing delay (280ms) for natural UI feel
+    setTimeout(() => {
+      const reply = generateLocalChatResponse(query);
+      const assistantMessage: Message = {
+        id: `assistant-${Date.now()}`,
         role: 'assistant',
-        content:
-          'Unable to connect to the assistant service. Please check your network or contact Abir directly on WhatsApp.',
+        content: reply,
         timestamp: new Date(),
-        isError: true,
       };
-      setMessages((prev) => [...prev, networkErrorMessage]);
-    } finally {
+      setMessages((prev) => [...prev, assistantMessage]);
       setIsLoading(false);
-    }
+    }, 280);
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
       handleSendMessage();
-    }
-  };
-
-  const handleRetryLast = () => {
-    // Find last user message
-    const lastUserMsg = [...messages].reverse().find((m) => m.role === 'user');
-    if (lastUserMsg) {
-      handleSendMessage(lastUserMsg.content);
     }
   };
 
@@ -205,7 +148,7 @@ export const AskAbirChat: React.FC = () => {
       {isOpen && (
         <section
           aria-label="Ask Abir AI chat window"
-          className="fixed bottom-3 right-3 sm:bottom-6 sm:right-6 z-50 w-[calc(100vw-1.5rem)] sm:w-[410px] h-[560px] max-h-[85vh] flex flex-col rounded-2xl bg-[#171717] border border-dark-border shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200"
+          className="fixed bottom-3 right-3 sm:bottom-6 sm:right-6 z-50 w-[calc(100vw-1.5rem)] sm:w-[420px] h-[570px] max-h-[85vh] flex flex-col rounded-2xl bg-[#171717] border border-dark-border shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200"
         >
           {/* Header */}
           <div className="px-5 py-4 bg-[#202020] border-b border-dark-border flex items-center justify-between flex-shrink-0">
@@ -218,10 +161,10 @@ export const AskAbirChat: React.FC = () => {
                 <div className="flex items-center gap-1.5">
                   <h3 className="text-sm font-bold text-white tracking-tight">Ask Abir AI</h3>
                   <span className="px-1.5 py-0.5 rounded text-[10px] font-mono font-bold bg-accent-orange/20 text-accent-orange">
-                    BETA
+                    SMART AI
                   </span>
                 </div>
-                <p className="text-xs text-content-muted">Abir's personal portfolio assistant</p>
+                <p className="text-xs text-content-muted">Instant verified portfolio assistant</p>
               </div>
             </div>
 
@@ -284,27 +227,10 @@ export const AskAbirChat: React.FC = () => {
                     className={`max-w-[88%] p-3.5 rounded-2xl ${
                       isUser
                         ? 'bg-accent-orange text-white rounded-tr-xs shadow-sm font-sans'
-                        : msg.isError
-                        ? 'bg-[#261E1E] border border-red-500/30 text-red-200 rounded-tl-xs'
                         : 'bg-[#202020] border border-dark-border text-white rounded-tl-xs shadow-sm'
                     }`}
                   >
-                    {msg.isError ? (
-                      <div className="flex items-start gap-2 text-xs">
-                        <AlertCircle className="w-4 h-4 text-red-400 flex-shrink-0 mt-0.5" />
-                        <div>
-                          <p className="leading-relaxed">{msg.content}</p>
-                          <button
-                            type="button"
-                            onClick={handleRetryLast}
-                            className="mt-2 inline-flex items-center gap-1 text-[11px] font-bold text-accent-orange hover:text-white underline cursor-pointer"
-                          >
-                            <RefreshCw className="w-3 h-3" />
-                            <span>Retry question</span>
-                          </button>
-                        </div>
-                      </div>
-                    ) : isUser ? (
+                    {isUser ? (
                       <p className="text-sm leading-relaxed whitespace-pre-wrap">{msg.content}</p>
                     ) : (
                       <SafeMarkdown content={msg.content} />
@@ -333,7 +259,7 @@ export const AskAbirChat: React.FC = () => {
 
           {/* Suggested Questions (only visible if conversation has only initial welcome) */}
           {messages.length === 1 && (
-            <div className="px-4 py-2 bg-[#1A1A1A] border-t border-dark-border/60 flex-shrink-0">
+            <div className="px-4 py-2.5 bg-[#1A1A1A] border-t border-dark-border/60 flex-shrink-0">
               <span className="text-[10px] font-mono uppercase text-content-muted block mb-1.5">
                 Suggested questions:
               </span>
@@ -383,7 +309,7 @@ export const AskAbirChat: React.FC = () => {
                 onKeyDown={handleKeyDown}
                 rows={1}
                 maxLength={500}
-                placeholder="Ask about Abir's skills, projects, or background..."
+                placeholder="Ask about Abir's skills, education, projects..."
                 disabled={isLoading}
                 className="flex-1 bg-transparent text-sm text-white placeholder-content-muted resize-none focus:outline-none max-h-24 leading-normal disabled:opacity-50"
                 aria-label="Message input"
@@ -407,7 +333,7 @@ export const AskAbirChat: React.FC = () => {
             </form>
             <div className="mt-1.5 flex items-center justify-between text-[10px] text-content-muted px-1 font-mono">
               <span>Enter to send · Shift+Enter for new line</span>
-              <span>Ask Abir AI v1.0</span>
+              <span className="text-emerald-400">● 100% Reliable · Client AI</span>
             </div>
           </div>
         </section>

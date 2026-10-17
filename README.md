@@ -51,21 +51,17 @@ Visit `http://localhost:3000/` to explore the live website.
 
 ---
 
-## 🤖 Ask Abir AI Assistant Configuration (Google Gemini)
+## 🤖 Ask Abir AI Assistant (Pure Frontend Smart Chatbot)
 
-The portfolio includes an integrated AI assistant powered by Google Gemini API.
+The portfolio includes an integrated **pure frontend-based smart AI chatbot** built directly into the React component:
 
-1. Get a free API key from [Google AI Studio](https://aistudio.google.com/app/apikey) (no credit card required).
-2. Copy `.env.example` to `.env`:
-   ```bash
-   cp .env.example .env
-   ```
-3. Set your `GEMINI_API_KEY`:
-   ```env
-   GEMINI_API_KEY=your_actual_gemini_api_key_here
-   GEMINI_MODEL=gemini-3.8-flash
-   ```
-4. Supported free-tier models:
-   - `gemini-3.8-flash` (Default, recommended latest flash model)
-   - `gemini-flash-latest` (Always points to the current stable flash model)
+- ⚡ **Zero-Latency & Instant Responses:** Responds locally with natural, smooth conversational pacing.
+- 🔒 **100% Client-Side & Zero-Setup:** Requires **no backend server, no serverless functions, and no API keys**.
+- 🚀 **100% Reliable Vercel Deployment:** Deploys as a pure static web app on Vercel or any static host without serverless execution failures, timeouts, or cold starts.
+- 📚 **Comprehensive Verified Knowledge Base Embedded:**
+  - **Education:** B.Sc. in Software Engineering at Daffodil International University (2025–Present), HSC at Govt. Shaheed Suhrawardy College (GPA 4.50), SSC at Kishoreganj Zila Ideal School (Golden GPA 5.00).
+  - **Skills:** Python, C, HTML5, CSS3, React, TypeScript, Tailwind CSS, Git/GitHub, Microsoft Office.
+  - **Projects:** Personal Portfolio Website (with GitHub link and architecture details).
+  - **Goals & Philosophy:** Aspiring Data Science Engineer & Software Engineer.
+  - **Contact:** One-click WhatsApp link, Email, LinkedIn, GitHub, and direct CV download.
 
