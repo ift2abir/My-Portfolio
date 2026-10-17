@@ -270,6 +270,10 @@ You can view and download Abir's verified CV directly:
   * **Frameworks & Libraries:** React, Vite
   * **Styling:** Tailwind CSS, PostCSS, responsive mobile-first UI design
 
+* **Modern AI & Accelerated Workflows:**
+  * **Prompt Engineering:** Crafting structured directives, context-steering patterns, and persona constraints for advanced LLMs.
+  * **Vibe Coding:** High-velocity AI pair-programming, intuitive rapid prototyping, and immediate iterative synthesis.
+
 * **Developer & Productivity Tools:**
   * **Version Control:** Git, GitHub
   * **Office Suites:** Microsoft Excel, Microsoft Word, Microsoft PowerPoint
@@ -347,6 +351,50 @@ You can view and download Abir's verified CV directly:
 
 * **Version Control:** Abir uses Git for branch management, commit hygiene, and collaborative workflows.
 * **Profile:** You can view his public repositories, commits, and portfolio source code at [github.com/ift2abir](https://github.com/ift2abir).`,
+  },
+
+  // 12. Specific Skill: Prompt Engineering
+  {
+    id: 'skill_prompt_engineering',
+    name: 'Prompt Engineering',
+    priority: 8,
+    keywords: [
+      'prompt engineering',
+      'prompt',
+      'prompts',
+      'prompting',
+      'system prompt',
+      'system directives',
+      'context steering',
+    ],
+    patterns: [/does\s+(he|abir)\s+(know|practice|use)\s+prompt\s+engineering/i],
+    generate: () => `### 🪄 Prompt Engineering Expertise
+
+* **Overview:** Ifta Abir actively leverages **Prompt Engineering** to design structured, context-rich system directives, persona constraints, and few-shot patterns for large language models.
+* **Key Focus:**
+  * Context steering & constraint modeling
+  * Structured JSON schema output generation
+  * Multi-turn conversational architecture and reliable AI workflows`,
+  },
+
+  // 13. Specific Skill: Vibe Coding
+  {
+    id: 'skill_vibe_coding',
+    name: 'Vibe Coding',
+    priority: 8,
+    keywords: [
+      'vibe coding',
+      'vibe code',
+      'vibe coder',
+      'ai pair programming',
+      'rapid prototyping',
+      'fast coding',
+    ],
+    patterns: [/does\s+(he|abir)\s+(know|practice|do)\s+vibe\s+coding/i],
+    generate: () => `### 🔥 Vibe Coding & Accelerated Development
+
+* **Overview:** Abir practices **Vibe Coding**—harnessing high-speed conversational AI pair-programming, intuitive rapid prototyping, and rapid feedback loops to build functional software at peak velocity.
+* **Key Focus:** Fast translation of ideas into working code, intuitive prompt-led refactoring, and immediate interactive testing.`,
   },
 
   // 12. Projects
@@ -595,7 +643,9 @@ What would you like to know about Abir today?`;
             t.id !== 'skill_python' &&
             t.id !== 'skill_c' &&
             t.id !== 'skill_web' &&
-            t.id !== 'skill_git'
+            t.id !== 'skill_git' &&
+            t.id !== 'skill_prompt_engineering' &&
+            t.id !== 'skill_vibe_coding'
         )
       : filteredMatches;
 

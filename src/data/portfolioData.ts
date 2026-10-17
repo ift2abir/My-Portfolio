@@ -41,12 +41,14 @@ export interface SkillCategoryGroup {
 export const skillCategories: SkillCategoryGroup[] = [
   {
     categoryTitle: "Programming and Development",
-    categoryDescription: "Core programming languages and foundational web technologies",
+    categoryDescription: "Core programming languages, foundational web technologies, and modern AI workflows",
     skills: [
       { name: "C", icon: "Code2" },
       { name: "Python", icon: "Terminal" },
       { name: "HTML", icon: "Globe" },
       { name: "CSS", icon: "Palette" },
+      { name: "Prompt Engineering", icon: "Wand2" },
+      { name: "Vibe Coding", icon: "Flame" },
     ],
   },
   {
