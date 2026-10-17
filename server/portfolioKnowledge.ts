@@ -40,6 +40,7 @@ export const PORTFOLIO_KNOWLEDGE = `
 ## Technical Skills
 - Programming Languages: C (procedural programming, algorithms), Python (data structures, scripting, problem-solving, data science exploration).
 - Web Technologies: HTML5, CSS3, modern front-end tooling, React, TypeScript, Tailwind CSS, Vite.
+- Modern AI & Workflows: Prompt Engineering (designing clear, structured, and effective prompts to guide AI models toward useful outputs), Vibe Coding (building and iterating on applications using AI-assisted coding tools through natural-language instructions, testing, and refinement).
 - Version Control & Developer Tools: Git, GitHub.
 - Productivity Tools: Microsoft Excel, Microsoft Word, Microsoft PowerPoint.
 - Professional Strengths: Analytical & critical thinking, algorithmic problem-solving, leadership & communication, teamwork & collaboration, time management, high willingness to learn.

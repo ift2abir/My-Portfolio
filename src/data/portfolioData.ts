@@ -29,13 +29,16 @@ export const personalInfo = {
   ],
 };
 
+export interface SkillItem {
+  name: string;
+  icon: string;
+  description?: string;
+}
+
 export interface SkillCategoryGroup {
   categoryTitle: string;
   categoryDescription: string;
-  skills: Array<{
-    name: string;
-    icon: string;
-  }>;
+  skills: SkillItem[];
 }
 
 export const skillCategories: SkillCategoryGroup[] = [
@@ -43,35 +46,103 @@ export const skillCategories: SkillCategoryGroup[] = [
     categoryTitle: "Programming and Development",
     categoryDescription: "Core programming languages, foundational web technologies, and modern AI workflows",
     skills: [
-      { name: "C", icon: "Code2" },
-      { name: "Python", icon: "Terminal" },
-      { name: "HTML", icon: "Globe" },
-      { name: "CSS", icon: "Palette" },
-      { name: "Prompt Engineering", icon: "Wand2" },
-      { name: "Vibe Coding", icon: "Flame" },
+      {
+        name: "C",
+        icon: "Code2",
+        description: "Structured programming, pointers, memory concepts, and algorithmic foundations.",
+      },
+      {
+        name: "Python",
+        icon: "Terminal",
+        description: "Scripting, algorithmic problem solving, data structures, and automation.",
+      },
+      {
+        name: "HTML",
+        icon: "Globe",
+        description: "Semantic web structuring, modern HTML5 elements, and accessibility standards.",
+      },
+      {
+        name: "CSS",
+        icon: "Palette",
+        description: "Responsive layouts, Flexbox, CSS Grid, custom themes, and clean transitions.",
+      },
+      {
+        name: "Prompt Engineering",
+        icon: "Wand2",
+        description: "Designing clear, structured, and effective prompts to guide AI models toward useful outputs.",
+      },
+      {
+        name: "Vibe Coding",
+        icon: "Flame",
+        description: "Building and iterating on applications using AI-assisted coding tools through natural-language instructions, testing, and refinement.",
+      },
     ],
   },
   {
     categoryTitle: "Tools",
     categoryDescription: "Version control platforms and essential productivity suites",
     skills: [
-      { name: "Git", icon: "GitBranch" },
-      { name: "GitHub", icon: "Github" },
-      { name: "Microsoft Excel", icon: "Table" },
-      { name: "Microsoft Word", icon: "FileText" },
-      { name: "Microsoft PowerPoint", icon: "Presentation" },
+      {
+        name: "Git",
+        icon: "GitBranch",
+        description: "Distributed version control, branch management, and collaborative workflows.",
+      },
+      {
+        name: "GitHub",
+        icon: "Github",
+        description: "Remote repository hosting, code reviews, and open-source collaboration.",
+      },
+      {
+        name: "Microsoft Excel",
+        icon: "Table",
+        description: "Spreadsheet modeling, data analysis formulas, and structured tables.",
+      },
+      {
+        name: "Microsoft Word",
+        icon: "FileText",
+        description: "Technical documentation, academic reports, and structured formatting.",
+      },
+      {
+        name: "Microsoft PowerPoint",
+        icon: "Presentation",
+        description: "Technical presentations, slide decks, and project demonstrations.",
+      },
     ],
   },
   {
     categoryTitle: "Professional Strengths",
     categoryDescription: "Core analytical, collaborative, and communicative competencies",
     skills: [
-      { name: "Analytical and Critical Thinking", icon: "Cpu" },
-      { name: "Problem Solving", icon: "Binary" },
-      { name: "Leadership and Communication", icon: "MessageSquare" },
-      { name: "Teamwork and Collaboration", icon: "Users" },
-      { name: "Time Management", icon: "Clock" },
-      { name: "Willingness to Learn", icon: "Sparkles" },
+      {
+        name: "Analytical and Critical Thinking",
+        icon: "Cpu",
+        description: "Logical evaluation, structured reasoning, and requirement analysis.",
+      },
+      {
+        name: "Problem Solving",
+        icon: "Binary",
+        description: "Algorithmic thinking, methodical debugging, and edge-case mitigation.",
+      },
+      {
+        name: "Leadership and Communication",
+        icon: "MessageSquare",
+        description: "Clear technical expression, team alignment, and collaborative guidance.",
+      },
+      {
+        name: "Teamwork and Collaboration",
+        icon: "Users",
+        description: "Peer programming, active listening, and cross-functional cooperation.",
+      },
+      {
+        name: "Time Management",
+        icon: "Clock",
+        description: "Prioritization, milestone planning, and reliable deadline execution.",
+      },
+      {
+        name: "Willingness to Learn",
+        icon: "Sparkles",
+        description: "Continuous exploration of emerging developer tools, frameworks, and AI workflows.",
+      },
     ],
   },
 ];
