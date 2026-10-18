@@ -69,12 +69,12 @@ export const skillCategories: SkillCategoryGroup[] = [
       {
         name: "Prompt Engineering",
         icon: "Wand2",
-        description: "Designing clear, structured, and effective prompts to guide AI models toward useful outputs.",
+        description: "writing effective AI prompts, context engineering, and structured instructions.",
       },
       {
         name: "Vibe Coding",
         icon: "Flame",
-        description: "Building and iterating on applications using AI-assisted coding tools through natural-language instructions, testing, and refinement.",
+        description: "building applications with AI-assisted coding tools and iterative development.",
       },
     ],
   },

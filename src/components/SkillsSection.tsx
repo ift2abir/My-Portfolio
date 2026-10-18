@@ -92,14 +92,21 @@ export const SkillsSection: React.FC = () => {
                         <div
                           key={sIdx}
                           title={skill.description || skill.name}
-                          className="flex items-center gap-3 sm:gap-3.5 p-2.5 sm:p-3.5 rounded-lg bg-[#272727] border border-dark-border/60 hover:border-accent-orange/40 hover:bg-[#2b2b2b] hover:translate-x-1 transition-all duration-200 group cursor-default"
+                          className="flex items-start gap-3 sm:gap-3.5 p-2.5 sm:p-3 rounded-lg bg-[#272727] border border-dark-border/60 hover:border-accent-orange/40 hover:bg-[#2b2b2b] hover:translate-x-1 transition-all duration-200 group cursor-default"
                         >
-                          <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-md bg-[#1D1D1D] flex items-center justify-center text-accent-orange flex-shrink-0 group-hover:scale-105 group-hover:bg-accent-orange/15 transition-all duration-200">
+                          <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-md bg-[#1D1D1D] flex items-center justify-center text-accent-orange flex-shrink-0 group-hover:scale-105 group-hover:bg-accent-orange/15 transition-all duration-200 mt-0.5">
                             <Icon className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                           </div>
-                          <span className="text-xs sm:text-sm font-semibold text-white group-hover:text-accent-orange transition-colors">
-                            {skill.name}
-                          </span>
+                          <div className="flex-1 min-w-0">
+                            <span className="text-xs sm:text-sm font-semibold text-white group-hover:text-accent-orange transition-colors block">
+                              {skill.name}
+                            </span>
+                            {skill.description && (
+                              <p className="text-[11px] sm:text-xs text-content-muted mt-0.5 leading-snug">
+                                {skill.description}
+                              </p>
+                            )}
+                          </div>
                         </div>
                       );
                     })}

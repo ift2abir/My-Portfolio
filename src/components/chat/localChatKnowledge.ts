@@ -271,8 +271,8 @@ You can view and download Abir's verified CV directly:
   * **Styling:** Tailwind CSS, PostCSS, responsive mobile-first UI design
 
 * **Modern AI & Accelerated Workflows:**
-  * **Prompt Engineering:** Designing clear, structured, and effective prompts to guide AI models toward useful outputs.
-  * **Vibe Coding:** Building and iterating on applications using AI-assisted coding tools through natural-language instructions, testing, and refinement.
+  * **Prompt Engineering:** Writing effective AI prompts, context engineering, and structured instructions.
+  * **Vibe Coding:** Building applications with AI-assisted coding tools and iterative development.
 
 * **Developer & Productivity Tools:**
   * **Version Control:** Git, GitHub
@@ -370,7 +370,7 @@ You can view and download Abir's verified CV directly:
     patterns: [/does\s+(he|abir)\s+(know|practice|use)\s+prompt\s+engineering/i],
     generate: () => `### 🪄 Prompt Engineering Expertise
 
-* **Overview:** Ifta Abir practices **Prompt Engineering**—designing clear, structured, and effective prompts to guide AI models toward useful outputs.
+* **Overview:** Ifta Abir practices **Prompt Engineering**—writing effective AI prompts, context engineering, and structured instructions.
 * **Key Focus:**
   * Formulating precise system directives and persona constraints
   * Context steering, structured outputs, and reliable LLM responses
@@ -393,7 +393,7 @@ You can view and download Abir's verified CV directly:
     patterns: [/does\s+(he|abir)\s+(know|practice|do)\s+vibe\s+coding/i],
     generate: () => `### 🔥 Vibe Coding & Accelerated Development
 
-* **Overview:** Abir practices **Vibe Coding**—building and iterating on applications using AI-assisted coding tools through natural-language instructions, testing, and refinement.
+* **Overview:** Abir practices **Vibe Coding**—building applications with AI-assisted coding tools and iterative development.
 * **Key Focus:**
   * High-speed conversational AI pair-programming
   * Intuitive rapid prototyping and prompt-led iteration
